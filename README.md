@@ -1,5 +1,6 @@
 # Bulkrename
 This program can be used to rename multiple files at once, in the current directory.  
+This program is cross-platform.  
 
 # Building
 ```
