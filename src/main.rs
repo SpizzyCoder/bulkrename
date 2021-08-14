@@ -16,7 +16,7 @@ fn main() {
   let replace_str: &str = &args[2];
 
   // Get an iterator from current dir
-  let current_dir_iterator: ReadDir = match fs::read_dir("./") {
+  let current_dir_iterator: ReadDir = match fs::read_dir(".") {
     Ok(iterator) => iterator,
     Err(error) => {
       eprintln!["Couldn't open the current dir [Error: {}]",error];
