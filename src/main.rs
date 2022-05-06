@@ -5,6 +5,7 @@ fn main() {
   let args: Vec<String> = env::args().collect();
 
   if args.len() != 3 {
+    println!["{} v{}",env!["CARGO_PKG_NAME"],env!["CARGO_PKG_VERSION"]];
     println!["=============================="];
     println!["Syntax : bulkrename <SearchExpression> <ReplaceExpression>"];
     println!["Example: bulkrename 2020 2021"];
