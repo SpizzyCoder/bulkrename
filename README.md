@@ -6,6 +6,6 @@ This program is cross-platform.
 ```
 git clone https://gitlab.com/SpizzyCoder/bulkrename.git
 cd bulkrename
-cargo build --release
+cargo install --path .
 ```
-The executable is now located in ./target/release/bulkrename
+The executable is now located in your ./cargo/bin folder.
