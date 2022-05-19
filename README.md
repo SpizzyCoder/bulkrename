@@ -4,7 +4,7 @@ This program is cross-platform.
 
 # Building
 ```
-git clone https://gitlab.com/SpizzyCoder/bulkrename.git
+git clone https://github.com/SpizzyCoder/bulkrename.git
 cd bulkrename
 cargo install --path .
 ```
