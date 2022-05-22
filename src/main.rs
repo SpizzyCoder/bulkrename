@@ -1,20 +1,23 @@
-use std::{fs,env};
+use std::fs;
 use std::path::PathBuf;
 
+use clap::Parser;
+
+/// Simple program to list directories
+#[derive(Parser,Debug)]
+#[clap(version,about)]
+pub struct Args {
+  /// Search string
+  #[clap()]
+  search_str: String,
+
+  /// Replace string
+  #[clap()]
+  replace_str: String,
+}
+
 fn main() {
-  let args: Vec<String> = env::args().collect();
-
-  if args.len() != 3 {
-    println!["{} v{}",env!["CARGO_PKG_NAME"],env!["CARGO_PKG_VERSION"]];
-    println!["=============================="];
-    println!["Syntax : bulkrename <SearchExpression> <ReplaceExpression>"];
-    println!["Example: bulkrename 2020 2021"];
-    println!["=============================="];
-    return
-  }
-
-  let search_str: &str = &args[1];
-  let replace_str: &str = &args[2];
+  let args: Args = Args::parse();
 
   let objects_as_strings = match fs::read_dir(".") {
     Ok(iterator) => iterator.filter_map(|x| x.ok()) // Get all the valid items
@@ -26,7 +29,7 @@ fn main() {
   };
 
   for cur_object in objects_as_strings {
-    let renamed_object: String = cur_object.replace(search_str,replace_str);
+    let renamed_object: String = cur_object.replace(&args.search_str,&args.replace_str);
 
     // Ignore not renamed objects
     if renamed_object == cur_object {
